@@ -1,0 +1,23 @@
+
+.topMenu{
+    position: relative;
+    left: -270px;
+    top: 20px;
+    width: 335px;
+    text-align: right;
+    background-color: #ffddcd;
+}
+
+.topMenu:hover{
+    left: 0px;
+}
+
+.topMenu > div {
+    display: inline-block;
+    padding: 15px 15px;
+}
+
+.topMenu > div:hover {
+    outline: 2px solid red;
+}
+

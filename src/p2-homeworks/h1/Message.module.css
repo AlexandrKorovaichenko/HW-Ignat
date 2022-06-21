@@ -1,0 +1,45 @@
+.messageContainer {
+    width: 300px;
+    background-color: #9bff92;
+    display: grid;
+    margin: 0 auto;
+    grid-template-areas: "a m";
+    grid-template-columns: 3fr 10fr;
+    padding: 5px;
+}
+
+
+.messageContainer > div {
+    background: #175b11;
+}
+
+.avatar {
+    grid-area: a;
+}
+
+.avatar img{
+    width: 100%;
+    vertical-align: bottom;
+    -webkit-border-bottom-right-radius : 20px;
+}
+
+.message {
+    grid-area: m;
+    color: #fff;
+    padding-left: 15px;
+    position: relative;
+}
+
+.nameUser {
+
+}
+
+.messageUser {
+
+}
+
+
+.timeMessage {
+    position: absolute;
+    right: 10px;
+}

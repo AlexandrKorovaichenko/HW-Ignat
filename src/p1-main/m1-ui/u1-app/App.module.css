@@ -21,3 +21,19 @@
     outline: 2px solid red;
 }
 
+.spanName {
+    width: 130px;
+    display: inline-block;
+}
+
+
+.hw8 .spanAge,
+.hw8 .buttonCheck, 
+.hw8 .buttonSort {
+    display: inline-block;
+}
+
+.hw8 .buttonCheck, 
+.hw8 .buttonSort {
+    margin: 0 5px 0 0;
+}

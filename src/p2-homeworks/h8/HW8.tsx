@@ -1,8 +1,17 @@
 import React, {useState} from 'react'
 import {homeWorkReducer} from './bll/homeWorkReducer'
 import SuperButton from '../h4/common/c2-SuperButton/SuperButton'
+import style from "../../p1-main/m1-ui/u1-app/App.module.css"
+import { userTypeAC } from "./bll/homeWorkReducer";
 
-// export type UserType =
+
+export type UserType = {
+    _id: number
+    name: string
+    age: number
+}
+
+export type UsersType = Array<UserType>
 
 const initialPeople = [
     {_id: 0, name: 'Кот', age: 3},
@@ -14,28 +23,47 @@ const initialPeople = [
 ]
 
 function HW8() {
-    const [people, setPeople] = useState<any>(initialPeople) // need to fix any
 
-    // need to fix any
-    const finalPeople = people.map((p: any) => (
+    const [people, setPeople] = useState<UsersType>(initialPeople)
+
+    const finalPeople = people.map((p: UserType) => (
         <div key={p._id}>
-            some name, age
+            <span className = {style.spanName}> {p.name} </span>
+            <span className = {style.spanAge}> {p.age} </span>
         </div>
     ))
 
-    const sortUp = () => setPeople(homeWorkReducer(initialPeople, {type: 'sort', payload: 'up'}))
+    const sortUp    = () => setPeople( homeWorkReducer( initialPeople, { type : 'SORT-UP'}  ) )
+    const sortDown  = () => setPeople( homeWorkReducer( initialPeople, { type: 'SORT-DOWN'} ) )
+    const filterAge = () => setPeople( homeWorkReducer( initialPeople, { type: 'CHECK-AGE', payload: 18} ) )
 
     return (
-        <div>
+        <div className = {style.hw8}>
             <hr/>
             homeworks 8
 
             {/*should work (должно работать)*/}
             {finalPeople}
 
-            <div><SuperButton onClick={sortUp}>sort up</SuperButton></div>
-            <div>sort down</div>
-            check 18
+            <div className = {style.buttonSort}>
+                <SuperButton onClick={sortUp}>
+                    sort up
+                </SuperButton>
+            </div>
+
+            <div className = {style.buttonSort}>
+                <SuperButton onClick={sortDown}>
+                    sort down
+                </SuperButton>
+            </div>
+
+            <div className = {style.buttonCheck}>
+                <SuperButton onClick={filterAge}>
+                    check 18
+                </SuperButton>
+            </div>
+
+            
 
             <hr/>
             {/*для личного творчества, могу проверить*/}

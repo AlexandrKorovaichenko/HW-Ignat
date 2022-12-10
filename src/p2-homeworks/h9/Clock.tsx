@@ -1,31 +1,59 @@
 import React, {useState} from 'react'
 import SuperButton from '../h4/common/c2-SuperButton/SuperButton'
 
+
+type objDateType = {
+    day:     string
+    month:   string
+    year:    string
+    hours:   string
+    minutes: string
+    seconds: string
+}
+
+
 function Clock() {
+    
     const [timerId, setTimerId] = useState<number>(0)
-    const [date, setDate] = useState<Date>()
+    const [date, setDate] = useState<Date>(new Date)
     const [show, setShow] = useState<boolean>(false)
 
     const stop = () => {
-        // stop
+        clearInterval(timerId)
     }
+
     const start = () => {
         stop()
         const id: number = window.setInterval(() => {
-            // setDate
+            setDate(new Date);
         }, 1000)
         setTimerId(id)
     }
 
     const onMouseEnter = () => {
-        // show
+        setShow(true)
+        console.log("show")
     }
     const onMouseLeave = () => {
-        // close
+        setShow(false)
+        console.log("close")
     }
 
-    const stringTime = 'Time' // fix with date
-    const stringDate = 'Date' // fix with date
+    const getDateFormat = (val: string) => {
+            return val.length === 1 ? "0"+val : val;
+    }
+    
+    let objDate: objDateType = {
+            day:     getDateFormat(String(date.getDate())),
+            month:   getDateFormat(String(date.getMonth())),
+            year:    getDateFormat(String(date.getFullYear())),
+            hours:   getDateFormat(String(date.getHours())),
+            minutes: getDateFormat(String(date.getMinutes())),
+            seconds: getDateFormat(String(date.getSeconds())),
+        }
+
+    const stringDate = objDate.day + ":" + objDate.month + ":" + objDate.year;
+    const stringTime = objDate.hours + ":" + objDate.minutes + ":" + objDate.seconds
 
     return (
         <div>

@@ -32,11 +32,11 @@ function Clock() {
 
     const onMouseEnter = () => {
         setShow(true)
-        console.log("show")
+        //console.log("show")
     }
     const onMouseLeave = () => {
         setShow(false)
-        console.log("close")
+        //console.log("close")
     }
 
     const getDateFormat = (val: string) => {

@@ -1,15 +1,27 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import SuperButton from '../h4/common/c2-SuperButton/SuperButton'
+import { SetLoadingActionCreator } from "../h10/bll/loadingReducer"
+import { useDispatch, useSelector } from 'react-redux';
+import { AppStoreType } from './bll/store';
+//import store from "./bll/store"
 
 function HW10() {
+
     // useSelector, useDispatch
-    const loading = false
+    const dispatch = useDispatch();
+    const loading = useSelector((store: AppStoreType) => { return store.loadingReducer.loading; });
 
     const setLoading = () => {
-        // dispatch
-        // setTimeout
-        console.log('loading...')
+        dispatch(SetLoadingActionCreator(loading));
     };
+
+    useEffect(() => { 
+        if(loading) {
+                setTimeout(() => {
+                dispatch(SetLoadingActionCreator(loading));
+            }, 2000);
+        }
+    })
 
     return (
         <div>

@@ -1,0 +1,36 @@
+
+.doubleRangeConatainer {
+    margin-left: 0px;
+    left: 10px
+}
+
+
+.doubleRangeConatainer span {
+    display: inline-block;
+}
+
+
+.doubleRangeInput {
+    width: 200px;
+    height: 8px;
+    background-color: aquamarine;
+    position: relative;
+}
+
+.doubleRangeInput div {
+    background-color: blue;
+    width: 10px;
+    height: 16px;
+    position: absolute;
+    top: -4px;
+}
+
+.doubleRangeInput div:first-child {
+    left: 0px;
+    background-color: blueviolet;
+}
+
+
+.doubleRangeInput div:last-child {
+    right: 0px;
+}

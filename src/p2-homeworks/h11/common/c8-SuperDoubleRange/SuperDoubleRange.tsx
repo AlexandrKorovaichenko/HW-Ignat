@@ -52,7 +52,24 @@ const SuperDoubleRange: React.FC<SuperDoubleRangePropsType> = (
 
     }, [])
 
+    //++ Синхронизация Левого бегунка
+    let posRollerLeft = 0
+    if(value && rollerLeftElement){ 
+        const step = 100 / (widthDoubleRangeElement - rollerLeftWidth);
+        posRollerLeft = value[0] / step - marginLeftDoubleRangeElement;
+        posRollerLeft = Math.round(posRollerLeft)
 
+        if(posRollerLeft <= 0 ) { 
+            posRollerLeft = 0 
+        }else if(posRollerLeft >= widthDoubleRangeElement - rollerLeftWidth) { 
+            posRollerLeft = widthDoubleRangeElement - rollerLeftWidth
+        }
+    
+        rollerLeftElement.style.left = String(posRollerLeft) + "px";
+    }
+    //-- Синхронизация Левого бегунка
+
+    
     //События нажатия мыши
     const onMouseDownHandlerElementLeft = (event: any) => { 
         document.addEventListener('mousemove', onMouseMoveElementLeft);
@@ -77,11 +94,7 @@ const SuperDoubleRange: React.FC<SuperDoubleRangePropsType> = (
             let posRollerLeft = 0
 
             //Определаем интервал между курсором и левым краем бегунка.
-            if(differenceLeft > 0){
-                posRollerLeft = event.pageX - differenceLeft - marginLeftDoubleRangeElement;
-            } else {
-                posRollerLeft = event.pageX - marginLeftDoubleRangeElement;
-            }
+            posRollerLeft = event.pageX - differenceLeft - marginLeftDoubleRangeElement;
 
             //Проверяем границы за которые бегунок не должен выходить.
             if(posRollerLeft <= 0 ) { 
@@ -156,7 +169,6 @@ const SuperDoubleRange: React.FC<SuperDoubleRangePropsType> = (
     };
 
     const onMouseUpHandlerElementRight = () => {
-        console.log(12345);
         document.removeEventListener('mousemove', onMouseMoveElementRight);
         document.removeEventListener('onmouseup', onMouseMoveElementLeft);
         differenceLeft = 0;

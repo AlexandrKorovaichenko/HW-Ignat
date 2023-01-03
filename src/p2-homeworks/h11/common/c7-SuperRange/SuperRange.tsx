@@ -21,8 +21,8 @@ const SuperRange: React.FC<SuperRangePropsType> = (
         ...restProps// все остальные пропсы попадут в объект restProps
     }
 ) => {
+
     const onChangeCallback = (e: ChangeEvent<HTMLInputElement>) => {
-        console.log(e.currentTarget);
         onChange && onChange(e) // сохраняем старую функциональность
         onChangeRange && onChangeRange(+e.currentTarget.value)
     }
@@ -32,11 +32,12 @@ const SuperRange: React.FC<SuperRangePropsType> = (
     return (
         <>
             <input
-                type = {'range'}
-                onChange = {onChangeCallback}
-                className = {finalRangeClassName}
-                defaultValue = {value}
-                {...restProps} // отдаём инпуту остальные пропсы если они есть (value например там внутри)
+                type = { 'range' }
+                onChange = { onChangeCallback }
+                className = { finalRangeClassName }
+                defaultValue = { value }
+                value = { value }
+                { ...restProps } // отдаём инпуту остальные пропсы если они есть (value например там внутри)
             />
         </>
     )

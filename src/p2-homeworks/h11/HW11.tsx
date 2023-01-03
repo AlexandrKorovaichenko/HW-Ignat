@@ -5,27 +5,34 @@ import styleDoudleRange from './common/c8-SuperDoubleRange/SuperDoubleRange.modu
 
 function HW11() {
 
+
     const [value1, setValue1] = useState(0)
     const [value2, setValue2] = useState<[number, number]>([0, 100])
+
+
+    const onChangeRangeHandler = (value: number) => {
+        setValue1(value)
+        setValue2([value, value2[1]])
+    }
+
+    const onChangeRangeHandler1 = (value: [number, number]) => {
+        setValue1(value[0])
+        setValue2(value)
+    }
 
     return (
         <div>
             <hr/>
             homeworks 11
         
-            {/*
             <div>
                 <span>{value1}</span>
-                <SuperRange value = {value1}
-                            onChangeRange = {setValue1}
-                    // сделать так чтоб value1 изменялось
-                />
+                <SuperRange onChangeRange = {onChangeRangeHandler} value = {value1} />
             </div>
-            */}
 
             <div className = {styleDoudleRange.doubleRangeConatainer} >
                 <span> { value2[0] } </span>
-                    <SuperDoubleRange onChangeRange = {setValue2} value = {value2}/>
+                    <SuperDoubleRange onChangeRange = {onChangeRangeHandler1} value = {value2} />
                 <span> { value2[1] } </span>
             </div>
 

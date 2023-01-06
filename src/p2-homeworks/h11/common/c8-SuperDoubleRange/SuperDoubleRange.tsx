@@ -15,42 +15,34 @@ const SuperDoubleRange: React.FC<SuperDoubleRangePropsType> = (
     }
 ) => {
 
-    const [widthDoubleRangeElement, setWidthDoubleRange] = useState<number>(0)
-    const [marginLeftDoubleRangeElement, setMarginLeftDoubleRangeElement] = useState<number>(0)
+    let widthDoubleRangeElement = 0;
+    let marginLeftDoubleRangeElement = 0;
+    let rollerLeftWidth = 0;
+    let rollerRightWidth = 0;
+
     
-    const [rollerLeftElement, setRollerLeftElement] = useState<HTMLElement>()
-    const [rollerLeftWidth, setWidthRollerLeftElement] = useState<number>(0)
+    const findDoubleRangeElement = document.getElementById("doubleRangeInput");
+    if(findDoubleRangeElement){
+        widthDoubleRangeElement = findDoubleRangeElement.getBoundingClientRect().width;
+        marginLeftDoubleRangeElement = findDoubleRangeElement.getBoundingClientRect().left;
+    }
 
-    const [rollerRightElement, setRollerRightElement] = useState<HTMLElement>()
-    const [rollerRightWidth, setWidthRollerRightElement] = useState<number>(0)
+    
+    const rollerLeftElement = document.getElementById("rollerLeft");
+    if(rollerLeftElement){
+        rollerLeftWidth = rollerLeftElement.getBoundingClientRect().width;
+    } else {
+        rollerLeftWidth = 0;
+    }
 
-    useEffect(() => {
 
-        if(!widthDoubleRangeElement || !marginLeftDoubleRangeElement) { 
-            let findElement = document.getElementById("doubleRangeInput");
-            if(findElement){ 
-                setWidthDoubleRange(findElement.getBoundingClientRect().width);
-                setMarginLeftDoubleRangeElement(findElement.getBoundingClientRect().left);
-            }
-        }
+    const rollerRightElement = document.getElementById("rollerRight");
+    if(rollerRightElement){
+        rollerRightWidth = rollerRightElement.getBoundingClientRect().width;
+    } else {
+        rollerRightWidth = 0;
+    }
 
-        if(!rollerLeftElement || !rollerLeftWidth){ 
-            let findElement = document.getElementById("rollerLeft");
-            if(findElement){ 
-                setRollerLeftElement(findElement); 
-                setWidthRollerLeftElement(findElement.getBoundingClientRect().width)
-            }
-        }
-
-        if(!rollerRightElement || !rollerRightWidth) { 
-            let findElement = document.getElementById("rollerRight");
-            if(findElement){ 
-                setRollerRightElement(findElement); 
-                setWidthRollerRightElement(findElement.getBoundingClientRect().width)
-            }
-        }
-
-    }, [])
 
     //++ Синхронизация Левого бегунка
     let posRollerLeft = 0

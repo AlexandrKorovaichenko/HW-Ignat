@@ -1,0 +1,56 @@
+.buttonsContainer {
+    display: flex;
+    margin: 33px 0px 0px 70px;
+}
+
+
+button {
+    border: 1px solid #0066CC;
+    border-radius: 3px;
+    padding: 5px 24px;
+    height: 30px;
+    background-color: #ffffff;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 20px;
+    color: #0066CC;
+    margin-right: 10px;
+}
+
+button:disabled {
+    color: #b3b3b3;
+}
+
+.responseContainer {
+    display: flex;
+    align-items: center;
+    width: 55%;
+    margin-left: 130px;
+    min-height: 350px;
+}
+
+.imageContainer { 
+    margin-right: 80px;
+}
+
+.image { }
+
+.textContainer{ }
+
+.code {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 37px;
+    color: #000000;
+}
+
+.text, .info  {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    color: #000000;
+}
+
